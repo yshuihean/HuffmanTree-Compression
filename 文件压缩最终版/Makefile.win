@@ -1,0 +1,31 @@
+# Project: HFFile
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o HFT.o
+LINKOBJ  = main.o HFT.o
+LIBS     = -L"D:/work/Dev-Cpp/TDM-GCC-64/lib" -L"D:/work/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/work/Dev-Cpp/TDM-GCC-64/include" -I"D:/work/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/work/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"D:/work/Dev-Cpp/TDM-GCC-64/include" -I"D:/work/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/work/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/work/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = HFFile.exe
+CXXFLAGS = $(CXXINCS) -fexec-charset=gbk
+CFLAGS   = $(INCS) -fexec-charset=gbk
+DEL      = D:\work\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+HFT.o: HFT.c
+	$(CC) -c HFT.c -o HFT.o $(CFLAGS)
